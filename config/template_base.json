@@ -1,0 +1,57 @@
+{
+  "cliente": "NOME_DO_CLIENTE",
+  "pipeline": {
+    "nome": "Comercial V4",
+    "etapas": [
+      "Lead de Entrada",
+      "Triagem",
+      "Em Atendimento",
+      "MQL",
+      "Orçamento Enviado",
+      "Oportunidade/SQL",
+      "Agendado",
+      "Venda",
+      "Perdido"
+    ]
+  },
+  "campos_personalizados": [
+    { "name": "Origem do Lead", "type": "text" },
+    { "name": "UTM Campanha", "type": "text" },
+    { "name": "UTM Conjunto", "type": "text" },
+    { "name": "UTM Criativo", "type": "text" },
+    { "name": "Unidade", "type": "text" },
+    { "name": "Serviço", "type": "text" },
+    { "name": "Atendente Responsável", "type": "text" },
+    { "name": "Status Atendimento", "type": "text" },
+    { "name": "Valor Orçamento", "type": "numeric" },
+    { "name": "Data Agendamento", "type": "date" },
+    { "name": "Motivo de Perda", "type": "text" },
+    { "name": "Consentimento Template", "type": "text" }
+  ],
+  "tags_padrao": [
+    "origem_meta",
+    "origem_google",
+    "origem_instagram",
+    "origem_whatsapp",
+    "status_quente",
+    "status_morno",
+    "status_frio"
+  ],
+  "automacoes_manuais": [
+    {
+      "nome": "Boas-vindas",
+      "gatilho": "Lead novo entra no pipeline",
+      "acao": "Enviar mensagem inicial e coletar unidade/servico"
+    },
+    {
+      "nome": "Parar bot em atendimento humano",
+      "gatilho": "Lead movido para Em Atendimento",
+      "acao": "Interromper bot e notificar atendente"
+    },
+    {
+      "nome": "Follow-up de orcamento",
+      "gatilho": "Lead parado em Orçamento Enviado sem resposta",
+      "acao": "Criar tarefa ou enviar mensagem aprovada"
+    }
+  ]
+}
